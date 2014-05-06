@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">123fly</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="flights_list_loading">Loading flights…</string>
+    <string name="flights_list_loading_error">Error occurred while loading flights list :(</string>
+
+</resources>
