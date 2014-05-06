@@ -5,5 +5,14 @@
     <string name="hello_world">Hello world!</string>
     <string name="flights_list_loading">Loading flights…</string>
     <string name="flights_list_loading_error">Error occurred while loading flights list :(</string>
+    <string name="try_again_button">Try again</string>
+    <string name="flights_list_no_flights">No flights</string>
+
+    <string name="flight_date_null">No date</string>
+    <string name="flight_duration_null">No duration</string>
+
+    <string name="flight_from">From</string>
+    <string name="flight_to">To</string>
+    <string name="flight_duration">Flight duration:</string>
 
 </resources>

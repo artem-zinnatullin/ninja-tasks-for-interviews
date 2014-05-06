@@ -23,6 +23,7 @@ public class FlightsResponse extends BaseResponse {
         private String mHash;
         private String mAirline;
         private FlightTo mFlightTo;
+        private List<Offer> mOffers;
 
         public String getHash() {
             return mHash;
@@ -48,10 +49,17 @@ public class FlightsResponse extends BaseResponse {
             mFlightTo = flightTo;
         }
 
+        public List<Offer> getOffers() {
+            return mOffers;
+        }
+
+        public void setOffers(List<Offer> offers) {
+            mOffers = offers;
+        }
+
         public static class FlightTo {
             private Long mDuration;
-            private List<Segment> mSegmentsList;
-            private List<Offer> mOffers;
+            private List<Segment> mSegments;
 
             // I don't know what is flightBack, so I am not using it
 
@@ -63,20 +71,12 @@ public class FlightsResponse extends BaseResponse {
                 mDuration = duration;
             }
 
-            public List<Segment> getSegmentsList() {
-                return mSegmentsList;
+            public List<Segment> getSegments() {
+                return mSegments;
             }
 
-            public void setSegmentsList(List<Segment> segmentsList) {
-                mSegmentsList = segmentsList;
-            }
-
-            public List<Offer> getOffers() {
-                return mOffers;
-            }
-
-            public void setOffers(List<Offer> offers) {
-                mOffers = offers;
+            public void setSegments(List<Segment> segments) {
+                mSegments = segments;
             }
 
             public static class Segment {
@@ -171,35 +171,35 @@ public class FlightsResponse extends BaseResponse {
                     mLayoverTime = layoverTime;
                 }
             }
+        }
 
-            public static class Offer {
-                private String mOrigin;
-                private String mLink;
-                private BigDecimal mPrice;
+        public static class Offer {
+            private String mOrigin;
+            private String mLink;
+            private BigDecimal mPrice;
 
-                public String getOrigin() {
-                    return mOrigin;
-                }
+            public String getOrigin() {
+                return mOrigin;
+            }
 
-                public void setOrigin(String origin) {
-                    mOrigin = origin;
-                }
+            public void setOrigin(String origin) {
+                mOrigin = origin;
+            }
 
-                public String getLink() {
-                    return mLink;
-                }
+            public String getLink() {
+                return mLink;
+            }
 
-                public void setLink(String link) {
-                    mLink = link;
-                }
+            public void setLink(String link) {
+                mLink = link;
+            }
 
-                public BigDecimal getPrice() {
-                    return mPrice;
-                }
+            public BigDecimal getPrice() {
+                return mPrice;
+            }
 
-                public void setPrice(BigDecimal price) {
-                    mPrice = price;
-                }
+            public void setPrice(BigDecimal price) {
+                mPrice = price;
             }
         }
     }
