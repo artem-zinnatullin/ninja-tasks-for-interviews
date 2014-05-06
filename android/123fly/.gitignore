@@ -1,0 +1,15 @@
+# Build files and folders
+gradle/
+.gradle
+build/
+
+
+/local.properties
+/.idea/workspace.xml
+
+# Idea
+.idea/
+*.iml
+
+# Mac OS
+.DS_Store
