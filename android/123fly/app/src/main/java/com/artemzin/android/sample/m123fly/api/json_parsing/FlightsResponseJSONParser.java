@@ -51,6 +51,17 @@ public class FlightsResponseJSONParser {
         data.setAirline(dataJObject.getString("airline"));
         data.setFlightTo(parseFlightTo(dataJObject.getJSONObject("flightTo")));
 
+        JSONArray offersJArray = dataJObject.getJSONArray("offers");
+
+        final int countOfOffers = offersJArray.length();
+        List<FlightsResponse.Data.Offer> offerList = new ArrayList<FlightsResponse.Data.Offer>(countOfOffers);
+
+        for (int i = 0; i < countOfOffers; i++) {
+            offerList.add(parseOffer(offersJArray.getJSONObject(i)));
+        }
+
+        data.setOffers(offerList);
+
         return data;
     }
 
@@ -68,18 +79,7 @@ public class FlightsResponseJSONParser {
             segmentsList.add(parseSegment(segmentsJArray.getJSONObject(i)));
         }
 
-        flightTo.setSegmentsList(segmentsList);
-
-        JSONArray offersJArray = flightToJObject.getJSONArray("offers");
-
-        final int countOfOffers = offersJArray.length();
-        List<FlightsResponse.Data.FlightTo.Offer> offerList = new ArrayList<FlightsResponse.Data.FlightTo.Offer>(countOfOffers);
-
-        for (int i = 0; i < countOfOffers; i++) {
-            offerList.add(parseOffer(offersJArray.getJSONObject(i)));
-        }
-
-        flightTo.setOffers(offerList);
+        flightTo.setSegments(segmentsList);
 
         return flightTo;
     }
@@ -101,12 +101,12 @@ public class FlightsResponseJSONParser {
         return segment;
     }
 
-    private static FlightsResponse.Data.FlightTo.Offer parseOffer(JSONObject offerJSONObject) throws JSONException {
-        FlightsResponse.Data.FlightTo.Offer offer = new FlightsResponse.Data.FlightTo.Offer();
+    private static FlightsResponse.Data.Offer parseOffer(JSONObject offerJSONObject) throws JSONException {
+        FlightsResponse.Data.Offer offer = new FlightsResponse.Data.Offer();
 
         offer.setOrigin(offerJSONObject.getString("origin"));
         offer.setLink(offerJSONObject.getString("link"));
-        offer.setPrice(new BigDecimal("price"));
+        offer.setPrice(new BigDecimal(offerJSONObject.getString("price")));
 
         return offer;
     }
